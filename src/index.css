@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-teal: #40E0C8;
+  --brand-cyan: #20C5E0;
+  --brand-blue: #1A7FD4;
+  --brand-dark: #0A0F1E;
+  --brand-card: #0D1526;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--brand-dark);
+  color: #e2e8f0;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #40E0C8 0%, #20C5E0 50%, #1A7FD4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glowing border */
+.glow-border {
+  border: 1px solid rgba(64, 224, 200, 0.3);
+  box-shadow: 0 0 20px rgba(64, 224, 200, 0.05), inset 0 0 20px rgba(64, 224, 200, 0.02);
+}
+
+/* Gradient background mesh */
+.mesh-bg {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(64, 224, 200, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(26, 127, 212, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(32, 197, 224, 0.05) 0%, transparent 50%),
+    #0A0F1E;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0F1E; }
+::-webkit-scrollbar-thumb { background: linear-gradient(#40E0C8, #1A7FD4); border-radius: 3px; }
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-btn {
+  background: linear-gradient(90deg, #40E0C8, #20C5E0, #1A7FD4, #20C5E0, #40E0C8);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Hero overlay */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 15, 30, 0.5) 0%,
+    rgba(10, 15, 30, 0.55) 60%,
+    rgba(10, 15, 30, 0.95) 100%
+  );
+}
+
+/* Card hover */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(64, 224, 200, 0.12);
+  border-color: rgba(64, 224, 200, 0.5);
+}
+
+/* Nav link hover underline */
+.nav-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #40E0C8, #1A7FD4);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* WhatsApp floating */
+@keyframes wabounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.05); }
+}
+.wa-float { animation: wabounce 3s ease-in-out infinite; }
